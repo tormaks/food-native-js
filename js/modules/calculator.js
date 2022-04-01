@@ -38,6 +38,20 @@ function calculator() {
 
 	initLocalStorage('.calculating__choose_big div');
 	initLocalStorage('#gender div');
+
+	function calcTotal() {
+		if (!gender || !height || !weight || !age || !ratio) {
+			result.textContent = '___';
+		} else {
+			if (gender === 'woman') {
+				result.textContent = Math.round((447.6 + (9.2 * weight) + (3.1 * height) - (4.3 * age)) * ratio);
+			} else {
+				result.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
+			}
+		}
+	}
+
+	calcTotal();
 }
 
 export default calculator;
