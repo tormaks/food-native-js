@@ -77,6 +77,35 @@ function calculator() {
 
 	getStaticData('.calculating__choose_big');
 	getStaticData('#gender');
+
+	function getDynamicData(id) {
+		const input = document.querySelector(`${id}`);
+
+		input.addEventListener('input', () => {
+			if (input.value.match(/\D/g)) {
+				input.style.cssText = 'border: 1px solid red';
+			} else {
+				input.style.cssText = 'none';
+			}
+
+			switch (id) {
+				case '#height':
+					height = +input.value;
+					break;
+				case '#weight':
+					weight = +input.value;
+					break;
+				case '#age':
+					age = +input.value;
+					break;
+			}
+			calcTotal();
+		});
+	}
+
+	getDynamicData('#height');
+	getDynamicData('#weight');
+	getDynamicData('#age');
 }
 
 export default calculator;
