@@ -52,6 +52,31 @@ function calculator() {
 	}
 
 	calcTotal();
+
+	function getStaticData(parentSelector, activeClass = 'calculating__choose-item_active') {
+		const elements = document.querySelectorAll(`${parentSelector} div`);
+
+		elements.forEach(elem => {
+			elem.addEventListener('click', (evt) => {
+				if (evt.target.getAttribute('data-ratio')) {
+					ratio = elem.getAttribute('data-ratio');
+					localStorage.setItem('ratio', ratio);
+				} else {
+					gender = elem.getAttribute('id');
+					localStorage.setItem('gender', gender);
+				}
+
+				elements.forEach(elem => {
+					elem.classList.remove(activeClass);
+					evt.target.classList.add(activeClass);
+				});
+				calcTotal();
+			});
+		});
+	}
+
+	getStaticData('.calculating__choose_big');
+	getStaticData('#gender');
 }
 
 export default calculator;
