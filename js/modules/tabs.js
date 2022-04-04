@@ -56,6 +56,13 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 			autoSwitchTabs();
 		}
 	});
+
+	tabContainer.addEventListener('mouseenter', (event) => {
+		const target = event.target;
+		if (target && target.classList.contains(tabWrapper.slice(1))) {
+			clearInterval(idTabs);
+		}
+	});
 }
 
 export default tabs;
