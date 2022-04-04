@@ -63,6 +63,10 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 			clearInterval(idTabs);
 		}
 	});
+
+	hideTabContent();
+	showTabContent();
+	autoSwitchTabs();
 }
 
 export default tabs;
