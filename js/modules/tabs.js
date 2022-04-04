@@ -49,6 +49,13 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 			});
 		}
 	});
+
+	tabContainer.addEventListener('mouseleave', (event) => {
+		const target = event.target;
+		if (target && target.classList.contains(tabWrapper.slice(1))) {
+			autoSwitchTabs();
+		}
+	});
 }
 
 export default tabs;
