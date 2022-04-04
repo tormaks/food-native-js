@@ -37,6 +37,18 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 			}
 		}, 3000);
 	}
+
+	tabsParent.addEventListener('click', (event) => {
+		const target = event.target;
+		if (target && target.classList.contains(tabHeader.slice(1))) {
+			tabs.forEach((item, index) => {
+				if (target == item) {
+					hideTabContent();
+					showTabContent(index);
+				}
+			});
+		}
+	});
 }
 
 export default tabs;
