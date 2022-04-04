@@ -22,6 +22,21 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 		tabContent[i].classList.remove('hide');
 		tabs[i].classList.add(tabActive);
 	}
+
+	function autoSwitchTabs() {
+		idTabs = setInterval(function() {
+			for (let i = 0; i < tabContent.length; i++) {
+				if (tabContent[i].classList.contains('show')) {
+					i++;
+					if (i === 4) {
+						i = 0;
+					}
+					hideTabContent();
+					showTabContent(i);
+				}
+			}
+		}, 3000);
+	}
 }
 
 export default tabs;
