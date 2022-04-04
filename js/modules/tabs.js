@@ -16,6 +16,12 @@ function tabs(tabWrapper, windowTabs, tabsHeaders, tabHeader, tabActive) {
 			item.classList.remove(tabActive);
 		});
 	}
+
+	function showTabContent(i = 0) {
+		tabContent[i].classList.add('show', 'anim');
+		tabContent[i].classList.remove('hide');
+		tabs[i].classList.add(tabActive);
+	}
 }
 
 export default tabs;
