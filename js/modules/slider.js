@@ -21,6 +21,20 @@ function slider({container, wrapper, slide, prevArrow, nextArrow, totalCounter, 
 		total.textContent = slides.length;
 		current.textContent =  slideIndex;
 	}
+
+	slidesField.style.width = 100 * slides.length + '%';
+	slidesField.style.display = 'flex';
+	slidesField.style.transition = '0.5s all';
+
+	slidesWrapper.style.overflow = 'hidden';
+
+	slider.style.position = 'relative';
+
+	const indicators = document.createElement('ol'),
+		dots = [];
+	indicators.classList.add('carousel-indicators');
+
+	slider.append(indicators);
 }
 
 export default slider;
