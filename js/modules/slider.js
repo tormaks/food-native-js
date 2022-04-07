@@ -103,6 +103,30 @@ function slider({container, wrapper, slide, prevArrow, nextArrow, totalCounter, 
 		dots.forEach(dot => dot.style.opacity = '.5');
 		dots[slideIndex - 1].style.opacity = '1';
 	};
+
+	dots.forEach(dot => {
+		dot.addEventListener('click', (e) => {
+			const slideTo = e.target.getAttribute('data-slide-to');
+
+			slideIndex = slideTo;
+			offset = onlyNumber(width) * (slideTo - 1);
+
+			slidesField.style.transform = `translateX(-${offset}px)`;
+
+			if (slides.length < 10) {
+				current.textContent =  `0${slideIndex}`;
+			} else {
+				current.textContent =  slideIndex;
+			}
+
+			dots.forEach(dot => dot.style.opacity = ".5");
+			dots[slideIndex-1].style.opacity = 1;
+		});
+	});
+
+	const autoSwitchSlides = () => {
+		idSlides = setInterval(nextSlide, 3000);
+	};
 }
 
 export default slider;
