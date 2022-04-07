@@ -35,6 +35,24 @@ function slider({container, wrapper, slide, prevArrow, nextArrow, totalCounter, 
 	indicators.classList.add('carousel-indicators');
 
 	slider.append(indicators);
+
+	for (let i = 0; i < slides.length; i++) {
+		const dot = document.createElement('li');
+		dot.classList.add('dot');
+		dot.setAttribute('data-slide-to', i + 1);
+
+		if (i == 0) {
+			dot.style.opacity = 1;
+		}
+		indicators.append(dot);
+		dots.push(dot);
+	}
+
+	slides.forEach(slide => {
+		slide.style.width = width;
+	});
+
+	const onlyNumber = str => +str.replace(/\D/ig, '');
 }
 
 export default slider;
