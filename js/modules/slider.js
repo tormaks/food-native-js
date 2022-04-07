@@ -53,6 +53,31 @@ function slider({container, wrapper, slide, prevArrow, nextArrow, totalCounter, 
 	});
 
 	const onlyNumber = str => +str.replace(/\D/ig, '');
+
+	const nextSlide = () => {
+		if (offset == (onlyNumber(width) * (slides.length - 1))) {
+			offset = 0;
+		} else {
+			offset += onlyNumber(width);
+		}
+
+		slidesField.style.transform = `translateX(-${offset}px)`;
+
+		if (slideIndex == slides.length) {
+			slideIndex = 1;
+		} else {
+			slideIndex++;
+		}
+
+		if (slides.length < 10) {
+			current.textContent =  `0${slideIndex}`;
+		} else {
+			current.textContent =  slideIndex;
+		}
+
+		dots.forEach(dot => dot.style.opacity = '.5');
+		dots[slideIndex - 1].style.opacity = '1';
+	};
 }
 
 export default slider;
