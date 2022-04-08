@@ -38,6 +38,12 @@ function cards() {
 			this.parent.append(element);
 		}
 	}
+
+	getData('http://localhost:3000/menu').then(array => {
+		array.forEach(({img, altimg, title, descr, price}) => {
+			new MenuItem(img, altimg, title, descr, price, '.menu .container').render();
+		});
+	});
 }
 
 export default cards;
