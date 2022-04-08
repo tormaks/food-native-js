@@ -127,6 +127,26 @@ function slider({container, wrapper, slide, prevArrow, nextArrow, totalCounter, 
 	const autoSwitchSlides = () => {
 		idSlides = setInterval(nextSlide, 3000);
 	};
+
+	slider.addEventListener('mouseleave', (event) => {
+		const target = event.target;
+		if (target && target.classList.contains(container.slice(1))) {
+			autoSwitchSlides();
+		}
+	});
+
+	slider.addEventListener('mouseenter', (event) => {
+		const target = event.target;
+		if (target && target.classList.contains(container.slice(1))) {
+			clearInterval(idSlides);
+		}
+	});
+
+	next.addEventListener('click', nextSlide);
+
+	prev.addEventListener('click', prevSlide);
+
+	autoSwitchSlides();
 }
 
 export default slider;
