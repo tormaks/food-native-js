@@ -18,5 +18,12 @@ function closeModalWindow(modalSelector) {
 	document.body.style.overflow = '';
 }
 
+function modal(modalSelector, btnsOpenModal, timerOpenModal) {
+	const modalWindow = document.querySelector(modalSelector),
+		btnsOpenModalWindow = document.querySelectorAll(btnsOpenModal),
+		btnCloseModalWindow = modalWindow.querySelector('[data-close]');
+}
+
+export default modal;
 export {openModalWindow};
 export {closeModalWindow};
