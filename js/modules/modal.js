@@ -10,4 +10,13 @@ function openModalWindow(modalSelector, timerOpenModal) {
 	}
 }
 
+function closeModalWindow(modalSelector) {
+	const modalWindow = document.querySelector(modalSelector);
+
+	modalWindow.classList.add('hide');
+	modalWindow.classList.remove('show');
+	document.body.style.overflow = '';
+}
+
 export {openModalWindow};
+export {closeModalWindow};
