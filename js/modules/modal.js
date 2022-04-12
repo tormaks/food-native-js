@@ -22,6 +22,13 @@ function modal(modalSelector, btnsOpenModal, timerOpenModal) {
 	const modalWindow = document.querySelector(modalSelector),
 		btnsOpenModalWindow = document.querySelectorAll(btnsOpenModal),
 		btnCloseModalWindow = modalWindow.querySelector('[data-close]');
+
+	function openModalByScroll() {
+		if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+			openModalWindow(modalSelector, timerOpenModal);
+			window.removeEventListener('scroll', openModalByScroll);
+		}
+	}
 }
 
 export default modal;
